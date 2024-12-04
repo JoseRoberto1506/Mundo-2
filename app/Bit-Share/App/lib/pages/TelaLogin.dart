@@ -1,6 +1,8 @@
+import 'package:cfp_app/pages/onboardingCarregamento.dart';
 import 'package:flutter/material.dart';
 import './TelaCadastro.dart';
 import 'componentes/botao.dart';
+import './onboardingCarregamento.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -99,7 +101,13 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             // Botão de login
-            const Botao(texto: 'Log in'),
+            Botao(texto: 'Log in', onPressed: () { 
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const OnboardingScreenInitial(),
+              ),
+              );
+             },
+             ),
             const SizedBox(height: 20),
             // Opções adicionais
             Row(

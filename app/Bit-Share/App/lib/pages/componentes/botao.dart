@@ -4,10 +4,11 @@ class Botao extends StatelessWidget {
   const Botao({
     super.key,
     required this.texto,
+    required this.onPressed,
   });
 
-
   final String texto;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +19,11 @@ class Botao extends StatelessWidget {
         minimumSize: const Size(200, 50),
         maximumSize: const Size(296, 50),
       ),
-      onPressed: (){},
+      onPressed: onPressed,
       child: Text(
         texto,
         style: const TextStyle(
-          fontSize: 19.5,
+          fontSize: 16,
           fontFamily: 'Roboto',
           color: Colors.white,
         ),

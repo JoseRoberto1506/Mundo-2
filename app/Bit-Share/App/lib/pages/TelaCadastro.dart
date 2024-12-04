@@ -120,7 +120,13 @@ class RegisterPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               // Botão de Cadastrar
-              const Botao(texto: 'Cadastrar'),
+              Botao(texto: 'Cadastrar', onPressed: () {  
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => const LoginPage(),
+                )
+                );
+              },
+              ),
               const SizedBox(height: 20),
               // Opções adicionais
               Row(
