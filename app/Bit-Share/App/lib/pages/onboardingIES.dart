@@ -1,17 +1,19 @@
-import 'package:cfp_app/pages/onboardingCurso.dart';
+import 'package:cfp_app/pages/onboardingInteressesCompras.dart';
 import 'package:flutter/material.dart';
 
-class NameInputScreen extends StatefulWidget {
-  const NameInputScreen({Key? key}) : super(key: key);
+
+
+class OnboardingIES extends StatefulWidget {
+  const OnboardingIES({Key? key}) : super(key: key);
 
   @override
-  State<NameInputScreen> createState() => _NameInputScreenState();
+  State<OnboardingIES> createState() => _OnboardingIES();
 }
 
-class _NameInputScreenState extends State<NameInputScreen> {
+class _OnboardingIES extends State<OnboardingIES> {
   final TextEditingController nameController = TextEditingController();
-  int _currentStep = 1; // Define a etapa atual
-  final int _totalSteps = 6; // Define o total de etapas
+  int _currentStep = 3; // Etapa atual
+  final int _totalSteps = 6; // Total de etapas
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +55,12 @@ class _NameInputScreenState extends State<NameInputScreen> {
             ),
             const SizedBox(height: 32),
             Image.asset(
-              'assets/images/homemComNotebook.png',
+              '../assets/images/OnboardingIES.png',
               height: 150,
             ),
             const SizedBox(height: 24),
             const Text(
-              'Qual seu nome?',
+              'Qual Sua Instituição de Ensino?',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -69,7 +71,7 @@ class _NameInputScreenState extends State<NameInputScreen> {
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                labelText: 'Nome',
+                labelText: 'Instituição de Ensino Superior',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -94,16 +96,15 @@ class _NameInputScreenState extends State<NameInputScreen> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () {  
                     setState(() {
-                     // if (_currentStep < _totalSteps) _currentStep++;
-
-                    Navigator.push(context,
+                      // if (_currentStep < _totalSteps)_currentStep++;
+                      Navigator.push(context,
                    MaterialPageRoute(
-                builder: (context) => const OnboardingCurso(),
+                builder: (context) => const OnboardingInteressescompras(),
                 ),
-                );
-
+              );
+          
                     });
                   },
                   style: ElevatedButton.styleFrom(

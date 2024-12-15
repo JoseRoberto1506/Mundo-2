@@ -1,17 +1,18 @@
-import 'package:cfp_app/pages/onboardingCurso.dart';
+import 'package:cfp_app/pages/onboardingIES.dart';
 import 'package:flutter/material.dart';
 
-class NameInputScreen extends StatefulWidget {
-  const NameInputScreen({Key? key}) : super(key: key);
+
+class OnboardingCurso extends StatefulWidget {
+  const OnboardingCurso({Key? key}) : super(key: key);
 
   @override
-  State<NameInputScreen> createState() => _NameInputScreenState();
+  State<OnboardingCurso> createState() => _OnboardingCursoState();
 }
 
-class _NameInputScreenState extends State<NameInputScreen> {
+class _OnboardingCursoState extends State<OnboardingCurso> {
   final TextEditingController nameController = TextEditingController();
-  int _currentStep = 1; // Define a etapa atual
-  final int _totalSteps = 6; // Define o total de etapas
+  int _currentStep = 2; // Etapa atual
+  final int _totalSteps = 6; // Total de etapas
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,6 @@ class _NameInputScreenState extends State<NameInputScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Ação ao pressionar voltar
             Navigator.pop(context);
           },
         ),
@@ -43,35 +43,38 @@ class _NameInputScreenState extends State<NameInputScreen> {
                   child: CircleAvatar(
                     radius: 8,
                     backgroundColor: index + 1 < _currentStep
-                        ? const Color(0xFF5271FF)// Bolinhas completadas
+                        ? const Color(0xFF5271FF)
                         : index + 1 == _currentStep
-                            ? Colors.blue.withOpacity(0.5) // Bolinha atual
-                            : Colors.grey.shade300, // Bolinhas futuras
+                            ? Colors.blue.withOpacity(0.5)
+                            : Colors.grey.shade300,
                   ),
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Image.asset(
-              'assets/images/homemComNotebook.png',
+              '../assets/images/OnboardingCurso.png',
               height: 150,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.image_not_supported, size: 100);
+              },
             ),
             const SizedBox(height: 24),
             const Text(
-              'Qual seu nome?',
+              'Qual seu curso?',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                labelText: 'Nome',
+                labelText: 'Curso',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
@@ -81,9 +84,7 @@ class _NameInputScreenState extends State<NameInputScreen> {
               children: [
                 TextButton(
                   onPressed: () {
-                    setState(() {
-                      if (_currentStep > 1) _currentStep--;
-                    });
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Pular',
@@ -96,15 +97,14 @@ class _NameInputScreenState extends State<NameInputScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                     // if (_currentStep < _totalSteps) _currentStep++;
-
-                    Navigator.push(context,
-                   MaterialPageRoute(
-                builder: (context) => const OnboardingCurso(),
-                ),
-                );
-
+                      // if (_currentStep < _totalSteps) _currentStep++;
                     });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OnboardingIES(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5271FF),
